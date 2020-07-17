@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
+import Giphy from './components/Giphy';
+import Top from './components/Top';
 import './App.css';
+import logo from './logo.svg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+const App = () => {
+   return(
+      <Router>
+        <div className="lg">
+          <header className="App-header">
+          <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link><h2 className="logo">Giphy</h2>
+          </header>
+          <nav className="b-topg">
+            <ul>
+              <li><Link to="/Top" >Top Gifs</Link></li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route path="/" exact component={Giphy} />
+            <Route path="/Top" component={Top} />
+          </Switch>
+          
+        </div>
+        
+      </Router>
+   )
+};
+
+export default App; 
+
